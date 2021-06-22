@@ -32,3 +32,9 @@ Rest client leveraging JS.
 3. Create a CLI that reads all dostman files (like Jest), processes and outputs.
 
 4. Release!
+
+## Project Todos
+
+- [] Prettier, linter.
+
+- [] Tests and CI/CD.
