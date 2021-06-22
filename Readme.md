@@ -8,7 +8,10 @@ Rest client leveraging JS.
 
    Used decorators (@) and Regex to parse the individual requests.
 
-   - [ ] Test for different inputs, write Tests!
+- [x] Parsing with decorators.
+- [ ] Inject env variables, variables as functions (for refresh cases..).
+- [ ] Parse multiple requests seperated by `###`.
+- [ ] Test for different inputs, write Tests!
 
 2. Make requests, store response. Format and output.
 
@@ -21,10 +24,11 @@ Rest client leveraging JS.
   method: "GET",
   url: "https://api.github.com/users/egecavusoglu",
   headers: ["content-type: application/json", "Authorization: Bearer"],
-  requestBody: {
+  body: {
     public: true,
   },
-  responseBody: {
+  response: {
+    status: 200,
     data: true,
   },
 }
