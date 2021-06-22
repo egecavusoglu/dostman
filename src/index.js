@@ -1,14 +1,14 @@
 #!/usr/bin/env node
-const path = require('path')
-const cwd = process.cwd()
+const path = require('path');
+const cwd = process.cwd();
 
-const Dostman = require('./dostman')
+const Dostman = require('./dostman');
 
 // For dev purposes
 async function main() {
-    const filePath = path.join(cwd, 'src', 'sample.dostman')
-    const dostman = new Dostman(filePath)
-    console.log(dostman)
+    const filePath = path.join(cwd, 'src', 'sample.dostman');
+    const dostman = new Dostman(filePath);
+    console.log(dostman);
 }
 
-main()
+main();
