@@ -52,6 +52,19 @@ class Request {
     const regex = new RegExp(`(@${decorator})(.*?)(?=@)`);
     return chunk.match(regex)[0].replace(`@${decorator} `, "");
   }
+
+  toJson() {
+    return {
+      method: this.method,
+      url: this.url,
+      headers: this.headers,
+      body: this.body,
+    };
+  }
+
+  toString() {
+    return JSON.stringify(this.toJson());
+  }
 }
 
 module.exports = Request;
