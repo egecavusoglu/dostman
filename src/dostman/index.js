@@ -21,9 +21,13 @@ class Dostman {
     if (!file) {
       throw new Error("Unable to read file.");
     }
+
+    return this.cleanFile(file);
+  }
+
+  cleanFile(file) {
     file = file.replace(/(\r\n|\n|\r)/gm, " "); // Remove all line breaks
     file = file.replace(/\s\s+/g, " "); // Trim all whitespace to 1 space.
-    file += "@"; // Add @ at the end for regex to work correctly.
     return file;
   }
 
