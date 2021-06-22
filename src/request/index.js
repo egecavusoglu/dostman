@@ -1,109 +1,109 @@
-const axios = require("axios");
-const { parseDecorator } = require("../utils");
+const axios = require('axios')
+const { parseDecorator } = require('../utils')
 class Request {
-  method;
-  url;
-  headers;
-  body;
-  desc;
-  response;
+    method
+    url
+    headers
+    body
+    desc
+    response
 
-  constructor(chunk) {
-    const { method, url, headers, body, desc } = this.parseChunk(chunk);
-    this.method = method;
-    this.url = url;
-    this.headers = headers;
-    this.body = body;
-    this.desc = desc;
-  }
-
-  async execute() {
-    try {
-      const { status, data } = await axios({
-        method: this.method,
-        url: this.url,
-        data: this.body,
-        headers: this.headers,
-      });
-      // console.log(status, data);
-      this.response = {
-        status,
-        data,
-      };
-      return true;
-    } catch (err) {
-      console.error(err);
-      return false;
+    constructor(chunk) {
+        const { method, url, headers, body, desc } = this.parseChunk(chunk)
+        this.method = method
+        this.url = url
+        this.headers = headers
+        this.body = body
+        this.desc = desc
     }
-  }
 
-  parseChunk(chunk) {
-    chunk = chunk.replace(/(\r\n|\n|\r)/gm, " "); // Remove all line breaks
-    chunk = chunk.replace(/\s\s+/g, " "); // Trim all whitespace to 1 space.
-    return {
-      desc: this.parseDesc(chunk),
-      method: this.parseMethod(chunk),
-      url: this.parseUrl(chunk),
-      headers: this.parseHeaders(chunk),
-      body: this.parseBody(chunk),
-    };
-  }
+    async execute() {
+        try {
+            const { status, data } = await axios({
+                method: this.method,
+                url: this.url,
+                data: this.body,
+                headers: this.headers,
+            })
+            // console.log(status, data);
+            this.response = {
+                status,
+                data,
+            }
+            return true
+        } catch (err) {
+            console.error(err)
+            return false
+        }
+    }
 
-  parseMethod(chunk) {
-    let method = parseDecorator("method", chunk);
-    method = this.trimString(method);
-    return method;
-  }
+    parseChunk(chunk) {
+        chunk = chunk.replace(/(\r\n|\n|\r)/gm, ' ') // Remove all line breaks
+        chunk = chunk.replace(/\s\s+/g, ' ') // Trim all whitespace to 1 space.
+        return {
+            desc: this.parseDesc(chunk),
+            method: this.parseMethod(chunk),
+            url: this.parseUrl(chunk),
+            headers: this.parseHeaders(chunk),
+            body: this.parseBody(chunk),
+        }
+    }
 
-  parseUrl(chunk) {
-    let url = parseDecorator("url", chunk);
-    url = this.trimString(url);
-    return url;
-  }
+    parseMethod(chunk) {
+        let method = parseDecorator('method', chunk)
+        method = this.trimString(method)
+        return method
+    }
 
-  parseHeaders(chunk) {
-    let headers = parseDecorator("headers", chunk);
-    headers = headers.split(","); // Seperate into array with ","
-    const headersObject = {};
-    headers.forEach((h, ind) => {
-      headers[ind] = this.trimString(h);
-      const item = headers[ind].split(":");
-      const key = item[0];
-      const value = item[1];
-      headersObject[key] = value;
-    });
-    return headersObject;
-  }
+    parseUrl(chunk) {
+        let url = parseDecorator('url', chunk)
+        url = this.trimString(url)
+        return url
+    }
 
-  parseBody(chunk) {
-    let body = parseDecorator("body", chunk);
-    body = JSON.parse(body);
-    return body;
-  }
+    parseHeaders(chunk) {
+        let headers = parseDecorator('headers', chunk)
+        headers = headers.split(',') // Seperate into array with ","
+        const headersObject = {}
+        headers.forEach((h, ind) => {
+            headers[ind] = this.trimString(h)
+            const item = headers[ind].split(':')
+            const key = item[0]
+            const value = item[1]
+            headersObject[key] = value
+        })
+        return headersObject
+    }
 
-  parseDesc(chunk) {
-    let desc = parseDecorator("desc", chunk);
+    parseBody(chunk) {
+        let body = parseDecorator('body', chunk)
+        body = JSON.parse(body)
+        return body
+    }
 
-    return desc;
-  }
+    parseDesc(chunk) {
+        let desc = parseDecorator('desc', chunk)
 
-  trimString(str) {
-    return str.replace(/\s+/g, "");
-  }
+        return desc
+    }
 
-  toJson() {
-    return {
-      method: this.method,
-      url: this.url,
-      headers: this.headers,
-      body: this.body,
-      response: this.response,
-    };
-  }
+    trimString(str) {
+        return str.replace(/\s+/g, '')
+    }
 
-  toString() {
-    return JSON.stringify(this.toJson());
-  }
+    toJson() {
+        return {
+            method: this.method,
+            url: this.url,
+            headers: this.headers,
+            body: this.body,
+            response: this.response,
+        }
+    }
+
+    toString() {
+        return JSON.stringify(this.toJson())
+    }
 }
 
-module.exports = Request;
+module.exports = Request

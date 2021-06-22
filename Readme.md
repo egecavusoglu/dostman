@@ -6,17 +6,17 @@ Rest client leveraging JS.
 
 1. Parse chunks of .dostman files.
 
-   Used decorators (@) and Regex to parse the individual requests.
+    Used decorators (@) and Regex to parse the individual requests.
 
-- [x] Parsing with decorators.
-- [ ] Inject env variables, variables as functions (for refresh cases..).
-- [ ] Parse multiple requests seperated by `###`.
-- [ ] Test for different inputs, write Tests!
+-   [x] Parsing with decorators.
+-   [ ] Inject env variables, variables as functions (for refresh cases..).
+-   [ ] Parse multiple requests seperated by `###`.
+-   [ ] Test for different inputs, write Tests!
 
 2. Make requests, store response. Format and output.
 
-- [ ] Output in both human readable .dostman like
-- [x] Output as JSON.
+-   [ ] Output in both human readable .dostman like
+-   [x] Output as JSON.
 
 ```js
 //JSON format might be an array of requests like this
@@ -40,12 +40,13 @@ Rest client leveraging JS.
 
 ## Project Todos
 
-- [ ] Prettier, linter.
-
-- [ ] Tests and CI/CD.
+-   [ ] Proper Docs
+-   [ ] Prettier, linter
+-   [ ] Tests
+-   [ ] CI/CD.
 
 ## Must be fixed
 
-- [ ] More error tolerant parsing mechanism
-- [ ] More error tolerant headers
-- [ ] No body on GET's.
+-   [ ] More error tolerant parsing mechanism
+-   [ ] More error tolerant headers
+-   [ ] No body on GET's.

@@ -1,8 +1,8 @@
 {
-  "verbose": false,
-  "ignore": ["*.test.js", "*.json", "fixtures/*"],
-  "execMap": {
-    "rb": "ruby",
-    "pde": "processing --sketch={{pwd}} --run"
-  }
+    "verbose": false,
+    "ignore": ["*.test.js", "*.json", "fixtures/*"],
+    "execMap": {
+        "rb": "ruby",
+        "pde": "processing --sketch={{pwd}} --run"
+    }
 }
