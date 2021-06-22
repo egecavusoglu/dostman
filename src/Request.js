@@ -1,4 +1,4 @@
-class Chunk {
+class Request {
   constructor(chunk) {
     const { method, url, headers, body } = this.parseChunk(chunk);
     this.method = method;
@@ -54,4 +54,4 @@ class Chunk {
   }
 }
 
-module.exports = Chunk;
+module.exports = Request;
