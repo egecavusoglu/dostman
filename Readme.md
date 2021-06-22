@@ -12,7 +12,8 @@ Rest client leveraging JS.
 
 2. Make requests, store response. Format and output.
 
-- Output in both human readable .dostman like format and JSON.
+- [ ] Output in both human readable .dostman like
+- [x] Output as JSON.
 
 ```js
 //JSON format might be an array of requests like this
