@@ -2,10 +2,10 @@
 @url https://api.github.com/users/egecavusoglu
 
 @headers
-content-type: application/json,
-Authorization: Bearer
+content-type: application/json
 
 @body
 {
     "public": true
 }
+

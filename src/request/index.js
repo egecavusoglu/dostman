@@ -1,3 +1,4 @@
+const axios = require("axios");
 class Request {
   constructor(chunk) {
     const { method, url, headers, body } = this.parseChunk(chunk);
@@ -5,6 +6,26 @@ class Request {
     this.url = url;
     this.headers = headers;
     this.body = body;
+  }
+
+  async execute() {
+    try {
+      const { status, data } = await axios({
+        method: this.method,
+        url: this.url,
+        data: this.body,
+        headers: this.headers,
+      });
+      // console.log(status, data);
+      this.response = {
+        status,
+        data,
+      };
+      return true;
+    } catch (err) {
+      console.error(err);
+      return false;
+    }
   }
 
   parseChunk(chunk) {
@@ -34,8 +55,15 @@ class Request {
   parseHeaders(chunk) {
     let headers = this.parseDecorator("headers", chunk);
     headers = headers.split(","); // Seperate into array with ","
-    headers.forEach((h, ind) => (headers[ind] = this.trimString(h)));
-    return headers;
+    const headersObject = {};
+    headers.forEach((h, ind) => {
+      headers[ind] = this.trimString(h);
+      const item = headers[ind].split(":");
+      const key = item[0];
+      const value = item[1];
+      headersObject[key] = value;
+    });
+    return headersObject;
   }
 
   parseBody(chunk) {
@@ -59,6 +87,7 @@ class Request {
       url: this.url,
       headers: this.headers,
       body: this.body,
+      response: this.response,
     };
   }
 

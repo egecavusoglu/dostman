@@ -38,3 +38,9 @@ Rest client leveraging JS.
 - [] Prettier, linter.
 
 - [] Tests and CI/CD.
+
+## Must be fixed
+
+- [ ] More error tolerant parsing mechanism
+- [ ] More error tolerant headers
+- [ ] No body on GET's.
