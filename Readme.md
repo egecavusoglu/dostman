@@ -50,3 +50,9 @@ Rest client leveraging JS.
 -   [ ] More error tolerant parsing mechanism
 -   [ ] More error tolerant headers
 -   [ ] No body on GET's.
+
+### Native JS in config thoughts
+
+Create a new js file js with config.
+
+Scrape all variables using [this](https://stackoverflow.com/questions/2762075/get-all-javascript-variables)
