@@ -40,9 +40,9 @@ Rest client leveraging JS.
 
 ## Project Todos
 
-- [] Prettier, linter.
+- [ ] Prettier, linter.
 
-- [] Tests and CI/CD.
+- [ ] Tests and CI/CD.
 
 ## Must be fixed
 
