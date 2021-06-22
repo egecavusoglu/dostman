@@ -1,5 +1,5 @@
 {
-  "verbose": true,
+  "verbose": false,
   "ignore": ["*.test.js", "*.json", "fixtures/*"],
   "execMap": {
     "rb": "ruby",

@@ -1,3 +1,13 @@
+
+
+@config
+const SERVER_URL = `https://jsonplaceholder.typicode.com/todos/1`;
+const lala = () => 123;
+
+###
+
+@desc This will get user's info 
+
 @method GET 
 @url https://api.github.com/users/egecavusoglu
 
@@ -9,3 +19,17 @@ content-type: application/json
     "public": true
 }
 
+###
+
+@desc This will get user's info 
+
+@method GET 
+@url https://api.github.com/users/egecavusoglu
+
+@headers
+content-type: application/json
+
+@body
+{
+    "public": true
+}

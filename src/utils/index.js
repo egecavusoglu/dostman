@@ -20,7 +20,18 @@ const writeFile = (filePath, content) => {
   }
 };
 
+const parseDecorator = (decorator, chunk) => {
+  const regex = new RegExp(`(@${decorator})(.*?)(?=(@|$))`);
+  // console.log(regex);
+  const match = chunk.match(regex);
+  if (!match) {
+    return null;
+  }
+  return match[0].replace(`@${decorator} `, "");
+};
+
 module.exports = {
   readFile,
   writeFile,
+  parseDecorator,
 };

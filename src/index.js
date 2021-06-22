@@ -1,20 +1,24 @@
 #!/usr/bin/env node
 const path = require("path");
 const cwd = process.cwd();
-const { readFile, writeFile } = require("./fs");
+
+const Dostman = require("./dostman");
 const Request = require("./request");
+const { readFile, writeFile } = require("./utils");
 
 // For dev purposes
 async function main() {
   const filePath = path.join(cwd, "src", "sample.dostman");
-  const chunk = readFile(filePath);
+  const dostman = new Dostman(filePath);
+  console.log(dostman);
+  //   const chunk = readFile(filePath);
 
-  const request = new Request(chunk);
-  console.log(request);
-  await request.execute();
-  writeFile("./output.json", request.toString());
+  //   const request = new Request(chunk);
+  //   console.log(request);
+  //   await request.execute();
+  //   writeFile("./output.json", request.toString());
 
-  // console.log(request.toJson());
+  //   console.log(request.toJson());
 }
 
 main();
