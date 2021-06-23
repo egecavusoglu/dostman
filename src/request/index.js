@@ -7,6 +7,7 @@ class Request {
     body;
     desc;
     response;
+    error;
 
     constructor(chunk) {
         const { method, url, headers, body, desc } = this.parseChunk(chunk);
@@ -25,14 +26,18 @@ class Request {
                 data: this.body,
                 headers: this.headers,
             });
-            // console.log(status, data);
             this.response = {
                 status,
                 data,
             };
             return true;
         } catch (err) {
-            console.error(err);
+            const { status, message } = err?.response;
+            this.error = {
+                status,
+                message,
+            };
+            // console.error(err);
             return false;
         }
     }
@@ -98,6 +103,7 @@ class Request {
             headers: this.headers,
             body: this.body,
             response: this.response,
+            error: this.error,
         };
     }
 

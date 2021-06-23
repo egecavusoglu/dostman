@@ -1,4 +1,4 @@
-const { readFile } = require('../utils');
+const { readFile, writeFile } = require('../utils');
 const { parseDecorator } = require('../utils');
 const Request = require('../request');
 
@@ -64,6 +64,24 @@ class Dostman {
             console.error(err);
             return false;
         }
+    }
+
+    async executeRequests() {
+        for (let req of this.requests) {
+            await req.execute();
+        }
+    }
+
+    writeOutput() {
+        const requestsAsJson = [];
+        for (let req of this.requests) {
+            requestsAsJson.push(req.toJson());
+        }
+        const output = {
+            requests: requestsAsJson,
+        };
+
+        writeFile('./output.json', output);
     }
 }
 

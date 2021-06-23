@@ -8,7 +8,10 @@ const Dostman = require('./dostman');
 async function main() {
     const filePath = path.join(cwd, 'src', 'sample.dostman');
     const dostman = new Dostman(filePath);
+
+    await dostman.executeRequests();
     console.log(dostman);
+    dostman.writeOutput();
 }
 
 main();
