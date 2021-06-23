@@ -9,7 +9,8 @@
     "scripts": {
         "start": "nodemon src/index.js",
         "test": "echo \"Error: no test specified\" && exit 1",
-        "prettify": "npx prettier --write ."
+        "prettify": "npx prettier --write .",
+        "prettify-output": "npx prettier --write ./output.json"
     },
     "keywords": [],
     "author": "",

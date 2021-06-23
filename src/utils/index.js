@@ -1,4 +1,6 @@
 const fs = require('fs');
+const { execSync } = require("child_process");
+
 
 const readFile = (filePath) => {
     try {
@@ -11,8 +13,12 @@ const readFile = (filePath) => {
 };
 
 const writeFile = (filePath, content) => {
+    if (typeof content != +'string') {
+        content = JSON.stringify(content);
+    }
     try {
         fs.writeFileSync(filePath, content);
+        execSync("npm run prettify-output", {stdio: 'inherit'});
         return true;
     } catch (err) {
         console.error(`${err}`);
