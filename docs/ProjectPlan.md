@@ -43,6 +43,7 @@
 -   [x] Prettier
 -   [ ] Tests
 -   [ ] CI/CD.
+-   [ ] Timing for requests, perf analysis?
 
 ## Must be fixed
 
@@ -55,5 +56,3 @@
 Create a new js file js with config.
 
 Scrape all variables using [this](https://stackoverflow.com/questions/2762075/get-all-javascript-variables)
-
-## Bugs to resolve
