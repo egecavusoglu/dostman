@@ -1,58 +1,46 @@
-# Dostman
-[Work In Progress]
+<p align="center">
+<img src="./readme-assets/icon.png" style="width:80%, height: 10px; margin: auto" />
+</p>
+
+![version 0.0.1](https://img.shields.io/badge/version-0.0.1-brightgreen)
+
+## dostman [Work in Progress]
+
 Maintain your API development, documentation and experimentation all within your Node.js project.
 
-## Steps
+- This project is still in development, feel free to contact me @egecavusoglu to collaborate. See [Project Plan](./ProjectPlan.md) for to do items.
+### Why dostman instead of Postman?
 
-1. Parse chunks of .dostman files.
+- Remove the need of an external app.
+- Don't deal with Postman's business logic or plan restrictions.
+- Get formatted output of your API requests in JSON, use & distribute it anywhere you like.
+- Track your API documentation with your project's version management. No more outdated API docs!
 
-    Used decorators (@) and Regex to parse the individual requests.
+## How to use
 
--   [x] Parsing with decorators.
--   [ ] Inject env variables, variables as functions (for refresh cases..).
--   [ ] Parse multiple requests seperated by `###`.
--   [ ] Test for different inputs, write Tests!
+1. Create a file with .dostman extension file in following format
 
-2. Make requests, store response. Format and output.
+- @desc: Description of your endpoint
+- @method: HTTP method of the request (GET | POST | PUT | DELETE)
+- @headers: Specify headers, seperated by commas `,` .
+- @body: Specify request body as JSON.
 
--   [ ] Output in both human readable or .dostman like
--   [x] Output as JSON.
+```
+// sample.dostman
 
-```js
-//JSON format might be an array of requests like this
+@desc This will get user's info 
+
+@method POST 
+@url https://api.github.com/users/egecavusoglu
+
+@headers
+content-type: application/json,
+Authorization: Bearer my_token
+
+@body
 {
-  method: "GET",
-  url: "https://api.github.com/users/egecavusoglu",
-  headers: ["content-type: application/json", "Authorization: Bearer"],
-  body: {
-    public: true,
-  },
-  response: {
-    status: 200,
-    data: true,
-  },
+    "verbose": true
 }
 ```
 
-3. Create a CLI that reads all dostman files (like Jest), processes them and outputs.
-
-4. Release!
-
-## Project Todos
-
--   [ ] Proper Docs
--   [x] Prettier
--   [ ] Tests
--   [ ] CI/CD.
-
-## Must be fixed
-
--   [ ] More error tolerant parsing mechanism
--   [ ] More error tolerant headers
--   [ ] No body on GET's.
-
-### Native JS in config thoughts
-
-Create a new js file js with config.
-
-Scrape all variables using [this](https://stackoverflow.com/questions/2762075/get-all-javascript-variables)
+2. Execute dostman to get your API docs.

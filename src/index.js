@@ -10,7 +10,7 @@ async function main() {
     const dostman = new Dostman(filePath);
 
     await dostman.executeRequests();
-    console.log(dostman);
+    // console.log(dostman);
     dostman.writeOutput();
 }
 

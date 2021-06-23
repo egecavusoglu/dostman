@@ -6,11 +6,13 @@ const lala = () => 123;
 
 @desc This will get user's info 
 
-@method GET 
+@method POST 
 @url https://api.github.com/users/egecavusoglu
 
 @headers
-content-type: application/json
+content-type: application/json,
+Authorization: Bearer my_token
+
 
 @body
 {
