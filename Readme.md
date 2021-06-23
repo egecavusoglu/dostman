@@ -1,5 +1,5 @@
 <p align="center">
-<img src="./readme-assets/icon.png" style="width:80%, height: 10px; margin: auto" />
+<img src="./docs/icon.png" style="width:80%, height: 10px; margin: auto" />
 </p>
 
 ![version 0.0.1](https://img.shields.io/badge/version-0.0.1-brightgreen)
@@ -8,7 +8,7 @@
 
 Maintain your API development, documentation and experimentation all within your Node.js project.
 
-- This project is still in development, feel free to contact me @egecavusoglu to collaborate. See [Project Plan](./ProjectPlan.md) for to do items.
+- This project is still in development, feel free to contact me @egecavusoglu to collaborate. See [Project Plan](./docs/ProjectPlan.md) for to do items.
 ### Why dostman instead of Postman?
 
 - Remove the need of an external app.
@@ -44,3 +44,4 @@ Authorization: Bearer my_token
 ```
 
 2. Execute dostman to get your API docs.
+

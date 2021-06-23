@@ -1,3 +1,30 @@
+## Sample Usage
+
+Let's assume your input file is sample.dostman
+
+`sample.dostman`
+
+```
+@desc This will get user's info 
+
+@method POST 
+@url https://api.github.com/users/egecavusoglu
+
+@headers
+content-type: application/json
+
+@body
+{
+    "public": true
+}
+```
+
+You will get output 
+
+`output.json`
+
+```json
+
 {
     "requests": [
         {
@@ -45,3 +72,5 @@
         }
     ]
 }
+
+```
