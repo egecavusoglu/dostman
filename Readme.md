@@ -46,7 +46,7 @@ Authorization: Bearer my_token
 
 2. Dostman will execute your requests and give you API docs.
 
-### `@config` your dostman file
+### Configure your dostman file with `@config`
 
 Are you also tired of refreshing tokens for requests whenever you open your project after a while? Or want randomized variables? You can save your variables as functions to automate the process.
 
