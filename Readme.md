@@ -44,4 +44,35 @@ Authorization: Bearer my_token
 }
 ```
 
-2. Execute dostman to get your API docs.
+2. Dostman will execute your requests and give you API docs.
+
+### `@config` your dostman file
+
+Are you also tired of refreshing tokens for requests whenever you open your project after a while? Or want randomized variables? You can save your variables as functions to automate the process.
+
+Dostman will evaluate your config as JavaScript and replace your variables with your exported values.
+
+```
+@config
+const SERVER_URL = `https://jsonplaceholder.typicode.com/todos/1`;
+const variable_as_func = () => 555;
+
+exports = {SERVER_URL, variable_as_func};
+
+###
+
+
+@desc This will some data for my application.
+
+@method GET
+@url {{SERVER_URL}}
+
+@headers
+content-type: application/json
+my-header: {{variable_as_func}}
+@body
+{
+    "public": true
+}
+
+```

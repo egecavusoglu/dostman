@@ -8,7 +8,7 @@
 
 -   [x] Parsing with decorators.
 -   [x] Parse multiple requests seperated by `###`.
--   [ ] Inject env variables, variables as functions (for refresh cases..).
+-   [x] Inject env variables, variables as functions (for refresh cases..).
 
 2. Make requests, store response. Format and output.
 
@@ -55,9 +55,3 @@
 -   [ ] More error tolerant parsing mechanism.
 -   [ ] More error tolerant headers parsing.
 -   [ ] No body on GET's.
-
-### Native JS in config thoughts
-
-Create a new js file js with config.
-
-Scrape all variables using [this](https://stackoverflow.com/questions/2762075/get-all-javascript-variables)
