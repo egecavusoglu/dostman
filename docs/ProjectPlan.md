@@ -9,12 +9,11 @@
 -   [x] Parsing with decorators.
 -   [x] Parse multiple requests seperated by `###`.
 -   [ ] Inject env variables, variables as functions (for refresh cases..).
--   [ ] Test for different inputs, write Tests!
 
 2. Make requests, store response. Format and output.
 
 -   [x] Output as JSON.
--   [ ] Output in both human readable or .dostman like
+-   [ ] Output in both human readable or .dostman like (Maybe later)
 
 ```js
 //JSON format might be an array of requests like this
@@ -35,7 +34,13 @@
 
 3. Create a CLI that reads all dostman files (like Jest), processes them and outputs.
 
-4. Release!
+-   [ ] Make sure verbose logging mode.
+
+4. Write Tests
+
+-   [ ] Test for different inputs, fault tolerance.
+
+4. Release to npm!
 
 ## Project Todos
 
@@ -45,10 +50,10 @@
 -   [ ] CI/CD.
 -   [ ] Timing for requests, perf analysis?
 
-## Must be fixed
+## Bugs
 
--   [ ] More error tolerant parsing mechanism
--   [ ] More error tolerant headers
+-   [ ] More error tolerant parsing mechanism.
+-   [ ] More error tolerant headers parsing.
 -   [ ] No body on GET's.
 
 ### Native JS in config thoughts
