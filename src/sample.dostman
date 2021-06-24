@@ -4,7 +4,6 @@ const lala = () => 555;
 
 exports = {SERVER_URL, lala};
 
-
 ###
 
 @desc This will get user's info 
