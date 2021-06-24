@@ -6,7 +6,7 @@
 
 ## dostman [Work in Progress]
 
-Maintain your API development, documentation and experimentation all within your Node.js project.
+Maintain your API development, documentation and experimentation all within your codebase.
 
 - This project is still in development, feel free to contact me @egecavusoglu to collaborate. See [Project Plan](./docs/ProjectPlan.md) for to do items.
 ### Why dostman instead of Postman?
