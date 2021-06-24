@@ -42,6 +42,21 @@
                     "updated_at": "2021-06-22T00:43:53Z"
                 }
             }
+        },
+        {
+            "method": "GET",
+            "url": "https://jsonplaceholder.typicode.com/todos/1",
+            "headers": { "content-type": "application/json my-header" },
+            "body": { "public": true },
+            "response": {
+                "status": 200,
+                "data": {
+                    "userId": 1,
+                    "id": 1,
+                    "title": "delectus aut autem",
+                    "completed": false
+                }
+            }
         }
     ]
 }

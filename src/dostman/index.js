@@ -1,5 +1,9 @@
-const { readFile, writeFile } = require('../utils');
-const { parseDecorator } = require('../utils');
+const {
+    readFile,
+    writeFile,
+    parseDecorator,
+    extractVariables,
+} = require('../utils');
 const Request = require('../request');
 
 class Dostman {
@@ -7,6 +11,7 @@ class Dostman {
     filePath;
     file;
     config;
+    variables;
     requests;
 
     constructor(filePath) {
@@ -35,7 +40,7 @@ class Dostman {
         const chunks = this.getChunks();
         chunks.forEach((c) => {
             if (this.isConfigChunk(c)) {
-                this.config = this.parseConfig(c);
+                this.parseConfig(c);
                 return;
             }
             const req = this.parseRequest(c);
@@ -53,11 +58,24 @@ class Dostman {
 
     parseConfig(chunk) {
         const config = parseDecorator('config', chunk);
+        this.config = config;
+        this.evalConfig(config);
         return config;
+    }
+
+    evalConfig(configString) {
+        try {
+            const vars = eval(configString);
+            this.variables = vars;
+            return true;
+        } catch (err) {
+            throw new Error('Unable to evaluate config snippet.');
+        }
     }
 
     parseRequest(chunk) {
         try {
+            chunk = this.injectVariables(chunk);
             const request = new Request(chunk);
             return request;
         } catch (err) {
@@ -70,6 +88,24 @@ class Dostman {
         for (let req of this.requests) {
             await req.execute();
         }
+    }
+
+    injectVariables(chunk) {
+        const matches = extractVariables(chunk);
+        if (!matches || matches.length < 1) {
+            return chunk;
+        }
+        for (let match of matches) {
+            const key = match.substring(2, match.length - 2);
+            let value = this.variables[key];
+            if (value instanceof Function) {
+                value = value();
+            }
+            chunk = chunk.replace(match, value);
+            // console.log(value);
+        }
+        // console.log(chunk);
+        return chunk;
     }
 
     writeOutput() {

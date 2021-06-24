@@ -71,10 +71,6 @@ class Request {
         headers = headers.split(','); // Seperate into array with ","
         const headersObject = {};
         headers.forEach((h, ind) => {
-            const head = headers[ind];
-            console.log(head)
-            // headers[ind] = this.trimString(h);
-            // headers[ind] = h.trim();
             const item = headers[ind].split(':');
             const key = item[0].trim();
             const value = item[1].trim();

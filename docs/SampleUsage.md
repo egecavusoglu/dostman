@@ -5,9 +5,9 @@ Let's assume your input file is sample.dostman
 `sample.dostman`
 
 ```
-@desc This will get user's info 
+@desc This will get user's info
 
-@method POST 
+@method POST
 @url https://api.github.com/users/egecavusoglu
 
 @headers
@@ -19,12 +19,11 @@ content-type: application/json
 }
 ```
 
-You will get output 
+You will get output
 
 `output.json`
 
 ```json
-
 {
     "requests": [
         {
@@ -72,5 +71,4 @@ You will get output
         }
     ]
 }
-
 ```

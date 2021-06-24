@@ -1,6 +1,5 @@
 const fs = require('fs');
-const { execSync } = require("child_process");
-
+const { execSync } = require('child_process');
 
 const readFile = (filePath) => {
     try {
@@ -12,13 +11,15 @@ const readFile = (filePath) => {
     }
 };
 
-const writeFile = (filePath, content) => {
+const writeFile = (filePath, content, prettify = true) => {
     if (typeof content != +'string') {
         content = JSON.stringify(content);
     }
     try {
-        fs.writeFileSync(filePath, content);
-        execSync("npm run prettify-output", {stdio: 'inherit'});
+        fs.writeFileSync(filePath, content, 'utf8', { flag: 'wx' });
+        if (prettify) {
+            execSync(`npx prettier --write ${filePath}`, { stdio: 'inherit' });
+        }
         return true;
     } catch (err) {
         console.error(`${err}`);
@@ -36,8 +37,19 @@ const parseDecorator = (decorator, chunk) => {
     return match[0].replace(`@${decorator} `, '');
 };
 
+/**
+ * Returns variable expressions so that values can be injected.
+ * @param {*} chunk string that will be searched
+ * @returns array of variable expressions eg. [ {{my-variable}} , {{other-variable}}]
+ */
+const extractVariables = (chunk) => {
+    const matches = chunk.match(/\{\{(.*?)\}\}/g);
+    return matches;
+};
+
 module.exports = {
     readFile,
     writeFile,
     parseDecorator,
+    extractVariables,
 };

@@ -1,23 +1,9 @@
 @config
 const SERVER_URL = `https://jsonplaceholder.typicode.com/todos/1`;
-const lala = () => 123;
+const lala = () => 555;
 
-###
+exports = {SERVER_URL, lala};
 
-@desc This will get user's info 
-
-@method POST 
-@url https://api.github.com/users/egecavusoglu
-
-@headers
-content-type: application/json,
-Authorization: Bearer my_token
-
-
-@body
-{
-    "public": true
-}
 
 ###
 
@@ -29,6 +15,21 @@ Authorization: Bearer my_token
 @headers
 content-type: application/json
 
+@body
+{
+    "public": true
+}
+
+###
+
+@desc This will get user's info 
+
+@method GET 
+@url {{SERVER_URL}}
+
+@headers
+content-type: application/json
+my-header: {{lala}}
 @body
 {
     "public": true
