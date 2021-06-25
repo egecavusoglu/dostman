@@ -1,14 +1,11 @@
-const {
-    readFile,
-    writeFile,
-    parseDecorator,
-    extractVariables,
-} = require('../utils');
+const { readFile, writeFile } = require('../lib/fs');
+const { parseDecorator, extractVariables } = require('../lib/parsers');
 const Request = require('../request');
 
 class Dostman {
     // Member variables
     filePath;
+    fileName;
     file;
     config;
     variables;
@@ -16,6 +13,7 @@ class Dostman {
 
     constructor(filePath) {
         this.filePath = filePath;
+        this.fileName = filePath.split('/').slice(-1).pop();
         this.file = this.readFile(filePath);
         this.requests = [];
         this.parseFile();
@@ -117,7 +115,7 @@ class Dostman {
             requests: requestsAsJson,
         };
 
-        writeFile('./output.json', output);
+        writeFile(`${this.filePath}.json`, output);
     }
 }
 

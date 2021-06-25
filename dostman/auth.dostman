@@ -1,0 +1,15 @@
+
+
+@desc This will get user's info 
+
+@method GET 
+@url https://api.github.com/users/egecavusoglu
+
+@headers
+content-type: application/json
+
+@body
+{
+    "public": true
+}
+

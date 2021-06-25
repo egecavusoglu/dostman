@@ -1,5 +1,5 @@
 const axios = require('axios');
-const { parseDecorator } = require('../utils');
+const { parseDecorator } = require('../lib/parsers');
 class Request {
     method;
     url;

@@ -9,26 +9,11 @@ exports = {SERVER_URL, lala};
 @desc This will get user's info 
 
 @method GET 
-@url https://api.github.com/users/egecavusoglu
-
-@headers
-content-type: application/json
-
-@body
-{
-    "public": true
-}
-
-###
-
-@desc This will get user's info 
-
-@method GET 
 @url {{SERVER_URL}}
 
 @headers
 content-type: application/json
-my-header: {{lala}}
+
 @body
 {
     "public": true
