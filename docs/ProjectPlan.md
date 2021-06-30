@@ -36,7 +36,7 @@
 
 -   [x] Read all files, execute, save outputs.
 -   [x] Make sure verbose logging mode.
-    -   [ ]Add verbose option as flag.
+    -   [ ] Add verbose option as flag.
 
 4. Write Tests
 
