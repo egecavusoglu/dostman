@@ -1,7 +1,7 @@
 const { readFile, writeFile } = require('../lib/fs');
 const { parseDecorator, extractVariables } = require('../lib/parsers');
 const Request = require('../request');
-
+const Logger = require('../lib/logger');
 class Dostman {
     // Member variables
     filePath;
@@ -10,10 +10,14 @@ class Dostman {
     config;
     variables;
     requests;
+    logger;
 
-    constructor(filePath) {
+    constructor(filePath, verbose = true) {
+        this.logger = new Logger(verbose);
         this.filePath = filePath;
         this.fileName = filePath.split('/').slice(-1).pop();
+        this.logger.newLine();
+        this.logger.info(`Processing ${this.fileName}`);
         this.file = this.readFile(filePath);
         this.requests = [];
         this.parseFile();
@@ -22,6 +26,7 @@ class Dostman {
     readFile(filePath) {
         let file = readFile(filePath);
         if (!file) {
+            this.logger.error(`Unable to read file ${filePath}`);
             throw new Error('Unable to read file.');
         }
 
@@ -55,6 +60,7 @@ class Dostman {
     }
 
     parseConfig(chunk) {
+        this.logger.info('Parsing @config snippet...');
         const config = parseDecorator('config', chunk);
         this.config = config;
         this.evalConfig(config);
@@ -77,7 +83,7 @@ class Dostman {
             const request = new Request(chunk);
             return request;
         } catch (err) {
-            console.error(err);
+            this.logger.error(`${err}`);
             return false;
         }
     }
@@ -93,16 +99,16 @@ class Dostman {
         if (!matches || matches.length < 1) {
             return chunk;
         }
+        this.logger.log('Injecting Variables...');
         for (let match of matches) {
             const key = match.substring(2, match.length - 2);
             let value = this.variables[key];
             if (value instanceof Function) {
                 value = value();
             }
+            this.logger.value(`${key} = ${value}`);
             chunk = chunk.replace(match, value);
-            // console.log(value);
         }
-        // console.log(chunk);
         return chunk;
     }
 

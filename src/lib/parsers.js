@@ -1,10 +1,10 @@
-const logger = require('./logger');
+const { logger } = require('./logger');
 
 const parseDecorator = (decorator, chunk) => {
     const regex = new RegExp(`(@${decorator})(.*?)(?=(@|$))`);
     // console.log(regex);
     const match = chunk.match(regex);
-    if (!match) {
+    if (!match || match.length < 1) {
         logger.warn(`Unable to parse decorator ${decorator}`);
         return null;
     }

@@ -1,6 +1,8 @@
 /**
  * Global logger for the cli.
  */
+
+const chalk = require('chalk');
 class Logger {
     verbose;
     constructor(verbose = true) {
@@ -35,11 +37,18 @@ class Logger {
         this.consoleLog('');
     }
 
-    json(j) {
-        this.consoleLog(JSON.stringify(j, null, 2));
+    value(m) {
+        this.consoleLog(chalk.cyan(m));
+    }
+
+    json(j, colored = false) {
+        let str = JSON.stringify(j, null, 2);
+        if (colored) str = chalk.cyan(str);
+        this.consoleLog(str);
     }
 }
 
-// const logger = new Logger();
+const logger = new Logger(true); // For const exports, a verbose logger you can use without constructing.
 
-module.exports = Logger;
+const myModule = (module.exports = Logger);
+myModule.logger = logger;

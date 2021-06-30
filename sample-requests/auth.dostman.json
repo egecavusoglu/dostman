@@ -42,6 +42,13 @@
                     "updated_at": "2021-06-27T17:53:59Z"
                 }
             }
+        },
+        {
+            "method": "GET",
+            "url": "https://api.dne.com",
+            "headers": { "content-type": "application/json" },
+            "body": { "public": true },
+            "error": true
         }
     ]
 }

@@ -13,3 +13,15 @@ content-type: application/json
     "public": true
 }
 
+### 
+
+
+
+
+@desc Wrong URL request.
+
+@method GET 
+@url https://api.dne.com
+
+@headers
+content-type: application/json

@@ -35,11 +35,10 @@ class Request {
                 data,
             };
             this.logger.suc(`Executed ${this.url}`);
-
             return true;
         } catch (err) {
             // const { status, message } = err?.response;
-            this.logger.error(`Endpoint ${this.url}`);
+            this.logger.error(`Error with ${this.url}`);
             this.error = true;
             return false;
         }
@@ -62,7 +61,7 @@ class Request {
     parseMethod(chunk) {
         this.logger.log(`[2/5] Parsing method...`);
         let method = parseDecorator('method', chunk);
-        this.logger.log(`${method}`);
+        this.logger.value(`${method}`);
         method = this.trimString(method);
         return method;
     }
@@ -71,7 +70,7 @@ class Request {
         this.logger.log(`[3/5] Parsing URL...`);
         let url = parseDecorator('url', chunk);
         url = this.trimString(url);
-        this.logger.log(`${url}`);
+        this.logger.value(`${url}`);
         return url;
     }
 
@@ -86,22 +85,23 @@ class Request {
             const value = item[1].trim();
             headersObject[key] = value;
         });
-        this.logger.json(headersObject);
+        this.logger.json(headersObject, true);
         return headersObject;
     }
 
     parseBody(chunk) {
         this.logger.log(`[5/5] Parsing Body...`);
         let body = parseDecorator('body', chunk);
+        if (!body) return null;
         body = JSON.parse(body);
-        this.logger.json(body);
+        this.logger.json(body, true);
         return body;
     }
 
     parseDesc(chunk) {
         this.logger.log(`[1/5] Parsing description...`);
         let desc = parseDecorator('desc', chunk);
-        this.logger.log(`${desc}`);
+        this.logger.value(`${desc}`);
         return desc;
     }
 

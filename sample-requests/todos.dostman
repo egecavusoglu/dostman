@@ -1,8 +1,9 @@
 @config
 const SERVER_URL = `https://jsonplaceholder.typicode.com/todos/1`;
+const anotherVar = 123;
 const lala = () => 555;
 
-exports = {SERVER_URL, lala};
+exports = {SERVER_URL, anotherVar, lala};
 
 ###
 
@@ -16,5 +17,7 @@ content-type: application/json
 
 @body
 {
-    "public": true
+    "public": true,
+    "lala": {{lala}},
+    "another": {{anotherVar}}
 }

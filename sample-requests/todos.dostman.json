@@ -4,7 +4,7 @@
             "method": "GET",
             "url": "https://jsonplaceholder.typicode.com/todos/1",
             "headers": { "content-type": "application/json" },
-            "body": { "public": true },
+            "body": { "public": true, "lala": 555, "another": 123 },
             "response": {
                 "status": 200,
                 "data": {
