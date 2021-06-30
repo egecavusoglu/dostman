@@ -7,7 +7,8 @@
         "dman": "./src/index.js"
     },
     "scripts": {
-        "start": "nodemon src/index.js",
+        "dev": "nodemon src/index.js",
+        "start": "node src/index.js",
         "test": "echo \"Error: no test specified\" && exit 1",
         "prettify": "npx prettier --write .",
         "prettify-output": "npx prettier --write ./output.json"
@@ -21,7 +22,6 @@
     },
     "dependencies": {
         "axios": "^0.21.1",
-        "glob": "^7.1.7",
-        "winston": "^3.3.3"
+        "glob": "^7.1.7"
     }
 }

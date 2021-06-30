@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 const path = require('path');
 const cwd = process.cwd();
-
 const { scrapeDostmanFiles } = require('./lib/file-scraper');
 const Dostman = require('./dostman');
+const logger = require('./lib/logger');
 
 async function main() {
     const paths = await scrapeDostmanFiles();

@@ -18,7 +18,7 @@ const writeFile = (filePath, content, prettify = true) => {
     try {
         fs.writeFileSync(filePath, content, 'utf8', { flag: 'wx' });
         if (prettify) {
-            execSync(`npx prettier --write ${filePath}`, { stdio: 'inherit' });
+            execSync(`npx prettier --write ${filePath}`);
         }
         return true;
     } catch (err) {

@@ -1,5 +1,7 @@
 const axios = require('axios');
 const { parseDecorator } = require('../lib/parsers');
+const Logger = require('../lib/logger');
+
 class Request {
     method;
     url;
@@ -8,8 +10,10 @@ class Request {
     desc;
     response;
     error;
+    logger;
 
-    constructor(chunk) {
+    constructor(chunk, verbose = true) {
+        this.logger = new Logger(verbose);
         const { method, url, headers, body, desc } = this.parseChunk(chunk);
         this.method = method;
         this.url = url;
@@ -30,19 +34,20 @@ class Request {
                 status,
                 data,
             };
+            this.logger.suc(`Executed ${this.url}`);
+
             return true;
         } catch (err) {
-            const { status, message } = err?.response;
-            this.error = {
-                status,
-                message,
-            };
-            // console.error(err);
+            // const { status, message } = err?.response;
+            this.logger.error(`Endpoint ${this.url}`);
+            this.error = true;
             return false;
         }
     }
 
     parseChunk(chunk) {
+        this.logger.newLine();
+        this.logger.info('Parsing Request:');
         chunk = chunk.replace(/(\r\n|\n|\r)/gm, ' '); // Remove all line breaks
         chunk = chunk.replace(/\s\s+/g, ' '); // Trim all whitespace to 1 space.
         return {
@@ -55,18 +60,23 @@ class Request {
     }
 
     parseMethod(chunk) {
+        this.logger.log(`[2/5] Parsing method...`);
         let method = parseDecorator('method', chunk);
+        this.logger.log(`${method}`);
         method = this.trimString(method);
         return method;
     }
 
     parseUrl(chunk) {
+        this.logger.log(`[3/5] Parsing URL...`);
         let url = parseDecorator('url', chunk);
         url = this.trimString(url);
+        this.logger.log(`${url}`);
         return url;
     }
 
     parseHeaders(chunk) {
+        this.logger.log(`[4/5] Parsing Headers...`);
         let headers = parseDecorator('headers', chunk);
         headers = headers.split(','); // Seperate into array with ","
         const headersObject = {};
@@ -76,18 +86,22 @@ class Request {
             const value = item[1].trim();
             headersObject[key] = value;
         });
+        this.logger.json(headersObject);
         return headersObject;
     }
 
     parseBody(chunk) {
+        this.logger.log(`[5/5] Parsing Body...`);
         let body = parseDecorator('body', chunk);
         body = JSON.parse(body);
+        this.logger.json(body);
         return body;
     }
 
     parseDesc(chunk) {
+        this.logger.log(`[1/5] Parsing description...`);
         let desc = parseDecorator('desc', chunk);
-
+        this.logger.log(`${desc}`);
         return desc;
     }
 
