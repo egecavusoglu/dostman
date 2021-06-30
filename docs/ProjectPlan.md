@@ -35,7 +35,8 @@
 3. Create a CLI that reads all dostman files (like Jest), processes them and outputs.
 
 -   [x] Read all files, execute, save outputs.
--   [ ] Make sure verbose logging mode.
+-   [x] Make sure verbose logging mode.
+    -   [ ]Add verbose option as flag.
 
 4. Write Tests
 
