@@ -1,0 +1,52 @@
+@config
+const SERVER_URL = `https://jsonplaceholder.typicode.com`;
+const anotherVar = 123;
+const lala = () => 555;
+
+exports = {SERVER_URL, anotherVar, lala};
+
+###
+
+@desc This will get user's info 
+
+@method GET 
+@url {{SERVER_URL}}/posts
+
+@headers
+content-type: application/json
+
+@body
+{
+    "public": true,
+    "lala": {{lala}},
+    "another": {{anotherVar}}
+}
+
+###
+
+@desc Get posts by id.
+
+@method GET
+
+@url {{SERVER_URL}}/posts/1
+
+@headers
+content-type: application/json
+
+### 
+
+@desc Create a new post.
+
+@method POST
+
+@url {{SERVER_URL}}/posts
+
+@headers
+content-type: application/json
+
+@body
+{
+    "title": "foo",
+    "body": "bar",
+    "userId": 1
+}
