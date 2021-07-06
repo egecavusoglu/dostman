@@ -41,6 +41,11 @@ class Logger {
         this.consoleLog(chalk.cyan(m));
     }
 
+    colored(m, color = 'cyan') {
+        const clr = chalk[color];
+        this.consoleLog(clr(m));
+    }
+
     json(j, colored = false) {
         let str = JSON.stringify(j, null, 2);
         if (colored) str = chalk.cyan(str);

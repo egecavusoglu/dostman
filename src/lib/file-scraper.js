@@ -12,7 +12,7 @@ const scrapeDostmanFiles = async () => {
     }
     logger.suc('Found files');
     for (let p of paths) {
-        logger.value(`- ${p}`);
+        logger.colored(`- ${p}`, 'yellow');
     }
     return paths;
 };

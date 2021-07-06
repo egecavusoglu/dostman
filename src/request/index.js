@@ -34,18 +34,17 @@ class Request {
                 status,
                 data,
             };
-            this.logger.suc(`Executed ${this.url}`);
+            this.logger.suc(`Executed ${this.method} ${this.url}`);
             return true;
         } catch (err) {
             // const { status, message } = err?.response;
-            this.logger.error(`Error with ${this.url}`);
+            this.logger.error(`Error with ${this.method} ${this.url}`);
             this.error = true;
             return false;
         }
     }
 
     parseChunk(chunk) {
-        this.logger.newLine();
         this.logger.info('Parsing Request:');
         chunk = chunk.replace(/(\r\n|\n|\r)/gm, ' '); // Remove all line breaks
         chunk = chunk.replace(/\s\s+/g, ' '); // Trim all whitespace to 1 space.
@@ -63,6 +62,7 @@ class Request {
         let method = parseDecorator('method', chunk);
         this.logger.value(`${method}`);
         method = this.trimString(method);
+        this.method = method;
         return method;
     }
 
@@ -91,8 +91,16 @@ class Request {
 
     parseBody(chunk) {
         this.logger.log(`[5/5] Parsing Body...`);
+        if (this.method === 'GET') {
+            this.logger.value('No body for GET requests.');
+            return null;
+        }
+        this.logger.log(`[5/5] Parsing Body...`);
         let body = parseDecorator('body', chunk);
-        if (!body) return null;
+        if (!body) {
+            this.logger.colored('No body found.');
+            return null;
+        }
         body = JSON.parse(body);
         this.logger.json(body, true);
         return body;
@@ -111,6 +119,7 @@ class Request {
 
     toJson() {
         return {
+            description: this.desc,
             method: this.method,
             url: this.url,
             headers: this.headers,

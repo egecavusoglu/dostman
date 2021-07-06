@@ -99,14 +99,14 @@ class Dostman {
         if (!matches || matches.length < 1) {
             return chunk;
         }
-        this.logger.log('Injecting Variables...');
+        this.logger.log('\n Injecting Variables...');
         for (let match of matches) {
             const key = match.substring(2, match.length - 2);
             let value = this.variables[key];
             if (value instanceof Function) {
                 value = value();
             }
-            this.logger.value(`${key} = ${value}`);
+            this.logger.colored(`${key} = ${value}`, 'whiteBright');
             chunk = chunk.replace(match, value);
         }
         return chunk;

@@ -1,6 +1,6 @@
 const fs = require('fs');
 const { execSync } = require('child_process');
-
+const { logger } = require('./logger');
 const readFile = (filePath) => {
     try {
         return fs.readFileSync(filePath, 'utf-8');
@@ -20,9 +20,11 @@ const writeFile = (filePath, content, prettify = true) => {
         if (prettify) {
             execSync(`npx prettier --write ${filePath}`);
         }
+        logger.log(`✏️ Writing file output to ${filePath}`);
         return true;
     } catch (err) {
         console.error(`${err}`);
+        logger.suc(`Unable to write file to ${filePath}. ${err}`);
         return false;
     }
 };
