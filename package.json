@@ -4,8 +4,11 @@
     "description": "",
     "main": "src/index.js",
     "bin": {
-        "dman": "./src/index.js"
+        "dostman": "./src/index.js"
     },
+    "files": [
+        "src/*"
+    ],
     "scripts": {
         "dev": "nodemon src/index.js",
         "start": "node src/index.js",
