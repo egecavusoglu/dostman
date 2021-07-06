@@ -1,7 +1,7 @@
 {
     "name": "dostman",
     "version": "0.0.1",
-    "description": "",
+    "description": "Maintain your API development, documentation and experimentation all within your codebase.",
     "main": "src/index.js",
     "bin": {
         "dostman": "./src/index.js"
@@ -12,14 +12,20 @@
     "scripts": {
         "dev": "nodemon src/index.js",
         "start": "node src/index.js",
-        "test": "echo \"Error: no test specified\" && exit 1",
+        "test": "jest",
         "prettify": "npx prettier --write .",
         "prettify-output": "npx prettier --write ./output.json"
     },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
+    "keywords": [
+        "Postman",
+        "REST",
+        "API",
+        "Client"
+    ],
+    "author": "Ege Cavusoglu",
+    "license": "MIT",
     "devDependencies": {
+        "jest": "^27.0.6",
         "nodemon": "^2.0.7",
         "prettier": "^2.3.1"
     },
