@@ -11,8 +11,10 @@ class Dostman {
     variables;
     requests;
     logger;
+    verbose;
 
     constructor(filePath, verbose = true) {
+        this.verbose = verbose;
         this.logger = new Logger(verbose);
         this.filePath = filePath;
         this.fileName = filePath.split('/').slice(-1).pop();
@@ -80,7 +82,7 @@ class Dostman {
     parseRequest(chunk) {
         try {
             chunk = this.injectVariables(chunk);
-            const request = new Request(chunk);
+            const request = new Request(chunk, this.verbose);
             return request;
         } catch (err) {
             this.logger.error(`${err}`);
