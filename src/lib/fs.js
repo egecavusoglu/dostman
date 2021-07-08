@@ -1,12 +1,12 @@
 const fs = require('fs');
 const { execSync } = require('child_process');
 const { logger } = require('./logger');
+
 const readFile = (filePath) => {
     try {
         return fs.readFileSync(filePath, 'utf-8');
     } catch (err) {
-        // console.error(`No file found at ${filePath}.\n${err}`);
-        console.error(`${err}`);
+        logger.error(`${err}`);
         return false;
     }
 };
@@ -23,8 +23,7 @@ const writeFile = (filePath, content, prettify = true) => {
         logger.log(`✏️ Writing file output to ${filePath}`);
         return true;
     } catch (err) {
-        console.error(`${err}`);
-        logger.suc(`Unable to write file to ${filePath}. ${err}`);
+        logger.error(`Unable to write file to ${filePath}. ${err}`);
         return false;
     }
 };

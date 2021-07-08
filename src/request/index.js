@@ -1,5 +1,5 @@
 const axios = require('axios');
-const { parseDecorator } = require('../lib/parsers');
+const { parseDecorator, removeSpaces } = require('../lib/parsers');
 const Logger = require('../lib/logger');
 
 class Request {
@@ -46,8 +46,7 @@ class Request {
 
     parseChunk(chunk) {
         this.logger.info('Parsing Request:');
-        chunk = chunk.replace(/(\r\n|\n|\r)/gm, ' '); // Remove all line breaks
-        chunk = chunk.replace(/\s\s+/g, ' '); // Trim all whitespace to 1 space.
+        chunk = removeSpaces(chunk);
         return {
             desc: this.parseDesc(chunk),
             method: this.parseMethod(chunk),

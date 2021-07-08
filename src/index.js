@@ -10,7 +10,7 @@ async function main() {
     for (let p of paths) {
         try {
             const filePath = path.join(cwd, p);
-            const dostman = new Dostman(filePath);
+            const dostman = new Dostman(filePath, true);
             await dostman.executeRequests();
             dostman.writeOutput();
         } catch (err) {

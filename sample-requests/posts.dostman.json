@@ -1,7 +1,7 @@
 {
     "requests": [
         {
-            "description": "This will get user's info ",
+            "description": "This will get user's info",
             "method": "GET",
             "url": "https://jsonplaceholder.typicode.com/posts",
             "headers": { "content-type": "application/json" },
@@ -613,7 +613,7 @@
             }
         },
         {
-            "description": "Get posts by id. ",
+            "description": "Get posts by id.",
             "method": "GET",
             "url": "https://jsonplaceholder.typicode.com/posts/1",
             "headers": { "content-type": "application/json" },
@@ -629,7 +629,7 @@
             }
         },
         {
-            "description": "Create a new post. ",
+            "description": "Create a new post.",
             "method": "POST",
             "url": "https://jsonplaceholder.typicode.com/posts",
             "headers": { "content-type": "application/json" },
