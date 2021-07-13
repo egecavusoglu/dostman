@@ -2,9 +2,9 @@
     "name": "dostman",
     "version": "0.0.1",
     "description": "Maintain your API development, documentation and experimentation all within your codebase.",
-    "main": "src/index.js",
+    "main": "src/main/index.js",
     "bin": {
-        "dostman": "./src/index.js"
+        "dostman": "src/index.js"
     },
     "files": [
         "src/*"
@@ -23,7 +23,7 @@
         "API",
         "Client"
     ],
-    "author": "Ege Cavusoglu",
+    "author": "Ege Cavusoglu egecavusoglu99@gmail.com https://egecavusoglu.com",
     "license": "MIT",
     "devDependencies": {
         "jest": "^27.0.6",

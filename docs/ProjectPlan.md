@@ -46,9 +46,9 @@
 
 ## Project Todos
 
--   [ ] Proper Docs
+-   [x] Proper Docs
 -   [x] Prettier
--   [ ] Tests
+-   [x] Tests
 -   [ ] CI/CD.
 -   [ ] Timing for requests, perf analysis?
 

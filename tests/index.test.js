@@ -1,5 +1,5 @@
 const fs = require('fs');
-const { main } = require('../src/');
+const main = require('../src/main');
 
 /**
  * @end_to_end_test Execute main function and make sure getting output files for each input file.
