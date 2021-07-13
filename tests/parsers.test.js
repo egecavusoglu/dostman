@@ -92,8 +92,17 @@ test('Extract no variables', () => {
     expect(vars.length).toEqual(0);
 });
 
-// Extract variable: function.
+/**
+ * @todo
+ * @unit_test Extract variable: function.
+ */
 
-// Evaluate config with variable
+/**
+ * @todo
+ * @unit_test Evaluate config with variable
+ */
 
-// Evaluate config with variable as function
+/**
+ * @todo
+ * @unit_test Evaluate config with variable as function
+ */
