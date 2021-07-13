@@ -12,9 +12,10 @@
     "scripts": {
         "dev": "nodemon src/index.js",
         "start": "node src/index.js",
-        "test": "jest",
+        "test": "npm run remove-output-files && jest",
         "prettify": "npx prettier --write .",
-        "prettify-output": "npx prettier --write ./output.json"
+        "prettify-output": "npx prettier --write ./output.json",
+        "remove-output-files": "rm ./sample-requests/*.json || true"
     },
     "keywords": [
         "Postman",

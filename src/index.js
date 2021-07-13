@@ -5,12 +5,12 @@ const { scrapeDostmanFiles } = require('./lib/file-scraper');
 const Dostman = require('./dostman');
 const { logger } = require('./lib/logger');
 
-async function main() {
+async function main(verbose = true) {
     const paths = await scrapeDostmanFiles();
     for (let p of paths) {
         try {
             const filePath = path.join(cwd, p);
-            const dostman = new Dostman(filePath, true);
+            const dostman = new Dostman(filePath, verbose);
             await dostman.executeRequests();
             dostman.writeOutput();
         } catch (err) {
@@ -19,4 +19,6 @@ async function main() {
     }
 }
 
-main();
+// main();
+
+module.exports = { main };

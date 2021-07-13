@@ -5,4 +5,5 @@ module.exports = {
     collectCoverage: true,
     collectCoverageFrom: ['src/**/*.{js, jsx}'],
     coverageReporters: ['text'],
+    coveragePathIgnorePatterns: ['/node_modules/', '/config/'],
 };

@@ -53,7 +53,7 @@ class Logger {
     }
 }
 
-const logger = new Logger(true); // For const exports, a verbose logger you can use without constructing.
+const logger = new Logger(false); // For const exports, a verbose logger you can use without constructing.
 
 const myModule = (module.exports = Logger);
 myModule.logger = logger;
