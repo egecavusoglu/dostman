@@ -35,7 +35,7 @@ class Request {
                 data,
             };
             this.logger.suc(`Executed ${this.method} ${this.url}`);
-            return true;
+            return this.response;
         } catch (err) {
             // const { status, message } = err?.response;
             this.logger.error(`Error with ${this.method} ${this.url}`);
@@ -76,6 +76,7 @@ class Request {
     parseHeaders(chunk) {
         this.logger.log(`[4/5] Parsing Headers...`);
         let headers = parseDecorator('headers', chunk);
+        if (!headers) return {};
         headers = headers.split(','); // Seperate into array with ","
         const headersObject = {};
         headers.forEach((h, ind) => {
