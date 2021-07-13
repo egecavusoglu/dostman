@@ -1,5 +1,8 @@
 module.exports = {
-  testEnvironment: "node",
-  testTimeout: 10000,
-  verbose: true,
+    testEnvironment: 'node',
+    testTimeout: 10000,
+    verbose: true,
+    collectCoverage: true,
+    collectCoverageFrom: ['src/**/*.{js, jsx}'],
+    coverageReporters: ['text'],
 };
