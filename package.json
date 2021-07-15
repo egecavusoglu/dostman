@@ -1,6 +1,6 @@
 {
     "name": "dostman",
-    "version": "0.0.31",
+    "version": "1.0.0",
     "description": "Maintain your API development, documentation and experimentation all within your codebase.",
     "main": "src/main/index.js",
     "bin": {

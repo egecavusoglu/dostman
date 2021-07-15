@@ -1,14 +1,16 @@
 <p align="center">
-<img src="./docs/icon.png" style="width:80%, height: 10px; margin: auto" />
+<img src="https://pasteboard.co/KbdmI3m.png" style="width:80%, height: 10px; margin: auto" />
 </p>
 
-![version 0.0.1](https://img.shields.io/badge/version-0.0.1-brightgreen)
+<img alt="npm version" src="https://img.shields.io/npm/v/dostman.svg?"></a>
+[![Publish to NPM](https://github.com/egecavusoglu/dostman/actions/workflows/main.yml/badge.svg)](https://github.com/egecavusoglu/dostman/actions/workflows/main.yml)
+<img alt="weekly downloads from npm" src="https://img.shields.io/npm/dw/dostman.svg"></a>
 
-## dostman [Work in Progress]
+## dostman
 
 Maintain your API development, documentation and experimentation all within your codebase.
 
--   This project is still in development, feel free to contact me @egecavusoglu to collaborate. See [Project Plan](./docs/ProjectPlan.md) for to do items.
+-   This project is a new release! Feel free to contact me @egecavusoglu to collaborate or see [Project Plan](./docs/ProjectPlan.md) for to do items. Pull requests welcome!
 
 ### Why dostman instead of Postman?
 
@@ -19,32 +21,16 @@ Maintain your API development, documentation and experimentation all within your
 
 ## How to use
 
-1. Create a file with .dostman extension file in following format
+1. Create a file with .dostman extension file in following format. Find a more detailed how to use guide at [sample usage](./docs/SampleUsage.md).
 
 -   @desc: Description of your endpoint
 -   @method: HTTP method of the request (GET | POST | PUT | DELETE)
 -   @headers: Specify headers, seperated by commas `,` .
 -   @body: Specify request body as JSON.
 
-```
-// sample.dostman
+To see example .dostman files visit [sample-requests](./sample-requests).
 
-@desc This will get user's info
-
-@method POST
-@url https://api.github.com/users/egecavusoglu
-
-@headers
-content-type: application/json,
-Authorization: Bearer my_token
-
-@body
-{
-    "verbose": true
-}
-```
-
-2. Dostman will execute your requests and give you API docs.
+2. Dostman will find all files ending with .dostman extension, execute your requests and give you API docs.
 
 ### Configure your dostman file with `@config`
 
@@ -60,19 +46,4 @@ const variable_as_func = () => 555;
 exports = {SERVER_URL, variable_as_func};
 
 ###
-
-
-@desc This will some data for my application.
-
-@method GET
-@url {{SERVER_URL}}
-
-@headers
-content-type: application/json
-my-header: {{variable_as_func}}
-@body
-{
-    "public": true
-}
-
 ```

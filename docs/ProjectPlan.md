@@ -40,7 +40,7 @@
 
 4. Write Tests
 
--   [ ] Test for different inputs, fault tolerance.
+-   [x] Test for different inputs, fault tolerance.
 
 4. Release to npm!
 
@@ -49,11 +49,11 @@
 -   [x] Proper Docs
 -   [x] Prettier
 -   [x] Tests
--   [ ] CI/CD.
+-   [x] CI/CD.
 -   [ ] Timing for requests, perf analysis?
 
 ## Bugs
 
--   [ ] More error tolerant parsing mechanism.
--   [ ] More error tolerant headers parsing.
--   [ ] No body on GET's.
+-   [x] More error tolerant parsing mechanism.
+-   [x] More error tolerant headers parsing.
+-   [x] No body on GET's.
