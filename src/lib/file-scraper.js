@@ -9,6 +9,7 @@ const scrapeDostmanFiles = async () => {
     const paths = glob.sync(`**/*.${fileExtension}`);
     if (!paths || paths.length < 1) {
         logger.info('No .dostman files were found.');
+        return;
     }
     logger.suc('Found files');
     for (let p of paths) {
