@@ -6,7 +6,6 @@ const { logger } = require('../lib/logger');
 
 async function main(verbose = true) {
     const paths = await scrapeDostmanFiles();
-    console.log('GOT FILES', paths);
     for (let p of paths) {
         try {
             const filePath = path.join(cwd, p);
