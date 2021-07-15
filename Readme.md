@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://pasteboard.co/KbdmI3m.png" style="width:80%, height: 10px; margin: auto" />
+<img src="https://user-images.githubusercontent.com/42681882/125718829-23aac6f4-272f-4a68-9094-ea821a4e9300.png" style="width:80%, height: 10px; margin: auto" />
 </p>
 
 <img alt="npm version" src="https://img.shields.io/npm/v/dostman.svg?"></a>
