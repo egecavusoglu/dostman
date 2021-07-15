@@ -23,7 +23,7 @@ jobs:
               with:
                   node-version: 10
             - run: npm install
-            - run: npm install --dev
+            - run: npm run remove-output-files
             - run: npm test
             - uses: JS-DevTools/npm-publish@v1
               with:

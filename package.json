@@ -12,7 +12,7 @@
     "scripts": {
         "dev": "nodemon src/index.js",
         "start": "node src/index.js",
-        "test": "npm run remove-output-files && jest",
+        "test": "jest",
         "prettify": "npx prettier --write .",
         "prettify-output": "npx prettier --write ./output.json",
         "remove-output-files": "rm ./sample-requests/*.json || true"
