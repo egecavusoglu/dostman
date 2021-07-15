@@ -1,10 +1,4 @@
-const Dostman = require('../src/dostman');
-const {
-    validChunk,
-    chunkMissingHeaders,
-    chunkValidEndpoint,
-    chunkInvalidEndpoint,
-} = require('./request.test');
+const Dostman = require('../src/dostman/index.js');
 
 /**
  * @unit_test Construct dostman: multiple valid requests.
