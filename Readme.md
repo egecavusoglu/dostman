@@ -42,9 +42,9 @@ To see example .dostman files visit [sample-requests](./sample-requests).
 
 2. Run dostman at the root of your directory.
 - If installed globally
-  ```bash
-  dostman
-  ```
+```bash
+dostman
+```
 - If installed as a dev dependency:
 Add a script to your package.json
 ```json
