@@ -18,10 +18,20 @@ Maintain your API development, documentation and experimentation all within your
 -   Don't deal with Postman's business logic or plan restrictions.
 -   Get formatted output of your API requests in JSON, use & distribute it anywhere you like.
 -   Track your API documentation with your project's version management. No more outdated API docs!
+## Installation
+You can install dostman as a dev dependency to your project like this.
+```
+npm i -D dostman 
+```
+
+Or globally like this
+```
+npm i -g dostman
+```
 
 ## How to use
 
-1. Create a file with .dostman extension file in following format. Find a more detailed how to use guide at [sample usage](./docs/SampleUsage.md).
+1. Create files with .dostman extension file in following format. Find a more detailed how to use guide at [sample usage](./docs/SampleUsage.md).
 
 -   @desc: Description of your endpoint
 -   @method: HTTP method of the request (GET | POST | PUT | DELETE)
@@ -30,7 +40,20 @@ Maintain your API development, documentation and experimentation all within your
 
 To see example .dostman files visit [sample-requests](./sample-requests).
 
-2. Dostman will find all files ending with .dostman extension, execute your requests and give you API docs.
+2. Run dostman at the root of your directory.
+- If installed globally
+  ```bash
+  dostman
+  ```
+- If installed as a dev dependency:
+Add a script to your package.json
+```json
+"scripts": {
+    "dostman": "dostman"
+  },
+```
+
+Dostman will find all files under the directory ending with `.dostman` extension, execute your requests and give you API docs.
 
 ### Configure your dostman file with `@config`
 
