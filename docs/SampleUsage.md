@@ -21,7 +21,7 @@ content-type: application/json
 
 You will get output
 
-`output.json`
+`sample.dostman.json`
 
 ```json
 {
